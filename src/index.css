@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+
+body { @apply bg-ink text-white/90 antialiased; }
+
+::selection { background: rgba(0, 242, 254, 0.25); color: #eaffff; }
+:focus-visible { outline: 2px solid rgba(0, 242, 254, 0.65); outline-offset: 2px; border-radius: 8px; }
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 242, 254, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 254, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.grid-fade {
+  mask-image: radial-gradient(ellipse 80% 62% at 50% 0%, #000 45%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 62% at 50% 0%, #000 45%, transparent 100%);
+}
+.caret {
+  display: inline-block;
+  width: 9px;
+  height: 1.15em;
+  vertical-align: text-bottom;
+  background: #00f2fe;
+  margin-left: 3px;
+  animation: blink 1.05s steps(2, start) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+html { scrollbar-width: thin; scrollbar-color: rgba(0, 242, 254, 0.28) transparent; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(0, 242, 254, 0.25); border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.no-bar { scrollbar-width: none; }
+.no-bar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .caret { animation: none; }
+}
