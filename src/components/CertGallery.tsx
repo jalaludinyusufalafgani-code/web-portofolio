@@ -82,41 +82,26 @@ export default function CertGallery() {
         Foto sertifikat, badge &amp; CTF — klik untuk zoom. Navigasi: ← → atau tombol.
       </p>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        {CERT_PHOTOS.map((ph, i) =>
-          ph.src ? (
-            <button
-              key={i}
-              onClick={() => setOpen(i)}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-panel/60 text-left"
-            >
-              <img
-                src={ph.src}
-                alt={ph.title}
-                loading="lazy"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-3.5">
-                <div className="text-[13px] font-medium text-white">{ph.title}</div>
-              </div>
-              <div className="absolute right-3 top-3 rounded-full bg-black/60 p-2 text-cy opacity-0 transition-opacity group-hover:opacity-100">
-                <ImagePlus size={15} />
-              </div>
-            </button>
-          ) : (
-            <div
-              key={i}
-              className="grid aspect-[4/3] place-items-center rounded-2xl border border-dashed border-white/15 bg-white/[.02] p-5 text-center"
-            >
-              <div>
-                <Award size={26} className="mx-auto text-white/15" />
-                <div className="mt-2.5 font-mono text-[11.5px] text-white/40">{ph.title}</div>
-                <div className="mt-1 font-mono text-[10px] text-white/20">
-                  slot-0{i + 1} — kosong (isi src di CERT_PHOTOS)
-                </div>
-              </div>
+        {CERT_PHOTOS.filter((ph) => Boolean(ph.src)).map((ph, i) => (
+          <button
+            key={i}
+            onClick={() => setOpen(i)}
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-panel/60 text-left"
+          >
+            <img
+              src={ph.src}
+              alt={ph.title}
+              loading="lazy"
+              className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-3.5">
+              <div className="text-[13px] font-medium text-white">{ph.title}</div>
             </div>
-          )
-        )}
+            <div className="absolute right-3 top-3 rounded-full bg-black/60 p-2 text-cy opacity-0 transition-opacity group-hover:opacity-100">
+              <ImagePlus size={15} />
+            </div>
+          </button>
+        ))}
       </div>
       {has === 0 && (
         <p className="mt-3 font-mono text-[10.5px] text-white/25">

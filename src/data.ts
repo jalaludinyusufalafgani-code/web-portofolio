@@ -112,12 +112,9 @@ export const CERTS: { icon: LucideIcon; title: string; org: string; desc: string
   { icon: ShieldCheck, title: "Bug Bounty Platform", org: "HackerOne", desc: "Eksplorasi program publik — responsible disclosure.", status: "Active", s: "green" },
 ];
 
-// TODO: foto — isi src dengan URL foto sertifikat asli (atau base64 data URI)
 export const CERT_PHOTOS: { title: string; src: string }[] = [
   { title: "Red Hat RH104 — Certificate of Attendance", src: cert01 },
   { title: "LKS Kab. Purbalingga — Juara 3", src: cert02 },
-  { title: "Sertifikat 03", src: "" },
-  { title: "Sertifikat 04", src: "" },
 ];
 
 export const NAV: { id: string; label: string }[] = [
